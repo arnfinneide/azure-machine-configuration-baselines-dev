@@ -1,13 +1,33 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
 version: 2
+
+# Consumer-repo Dependabot config. Mirrors the non-docker portion of
+# this template's own .github/dependabot.yml. The `docker` ecosystem
+# blocks are intentionally omitted because consumer repos do not host
+# the Dockerfiles (those live in the template repo under images/).
+
 updates:
-  - package-ecosystem: "github-actions" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # Devcontainer images and features referenced in .devcontainer/**.
+  # Picks up `image` fields and `features` entries; bumps tags and digests.
+  - package-ecosystem: "devcontainers"
+    directory: "/"
     schedule:
       interval: "weekly"
-    cooldown:
-      default-days: 14
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "devcontainers"
+    commit-message:
+      prefix: "chore(devcontainer)"
+
+  # GitHub Actions used by this repo's workflows.
+  # Pins are SHA-based, so updates arrive as digest bumps with version comments.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(actions)"

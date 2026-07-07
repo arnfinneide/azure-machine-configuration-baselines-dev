@@ -1,0 +1,19 @@
+{
+  // Recommended extensions for this workspace.
+  // VS Code will prompt local users to install these.
+  // In devcontainers/Codespaces, the devcontainer.json extensions are
+  // installed automatically — this file covers the local (non-container) case.
+  "recommendations": [
+    // Required locally to open and use devcontainers
+    "ms-vscode-remote.remote-containers",
+    // UI for managing remote connections (SSH, tunnels, containers)
+    "ms-vscode.remote-explorer",
+    // VS Code Remote Tunnels support
+    // "ms-vscode.remote-server",
+    // Uncomment if developing on Windows 11 with WSL2
+    // "ms-vscode-remote.remote-wsl",
+    // Uncomment if connecting to remote machines over SSH
+    // "ms-vscode-remote.remote-ssh",
+    // "ms-vscode-remote.remote-ssh-edit",
+  ]
+}

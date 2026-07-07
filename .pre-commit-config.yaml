@@ -1,0 +1,17 @@
+# To skip on a single commit: git commit --no-verify
+# To update hook versions:    pre-commit autoupdate
+
+# Consumer-repo pre-commit config. Mirrors the trufflehog hook from the
+# template's own .pre-commit-config.yaml. The maintainer-only
+# `sync-template` hook is intentionally omitted because consumer repos
+# do not have scripts/sync-template.sh.
+
+repos:
+- repo: local
+  hooks:
+    - id: trufflehog
+      name: TruffleHog secret scan
+      description: Defence in depth - detect secrets in the codebase.
+      entry: bash -c 'trufflehog git file://. --since-commit HEAD --results=verified,unknown --fail --no-update --trust-local-git-config'
+      language: system
+      stages: ["pre-commit", "pre-push"]

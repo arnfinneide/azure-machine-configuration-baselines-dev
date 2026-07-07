@@ -1,0 +1,14 @@
+* text=auto
+
+# Force LF for source and config files commonly edited across platforms
+*.sh text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+
+# Keep Windows-native scripts with CRLF when present
+*.bat text eol=crlf
+*.cmd text eol=lf
+*.ps1 text eol=crlf

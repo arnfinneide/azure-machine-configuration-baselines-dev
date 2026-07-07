@@ -1,15 +1,4 @@
-# Local state and generated logs
-*.log
-*.tmp
-
-# PowerShell transcript/output artifacts
-*.clixml
-
-# OS metadata
-.DS_Store
-
-# Old versions of files
-*.old
-
-# complete policies
-complete-policies/
+# Environment / secrets
+.env
+.env.*
+!.env.example
